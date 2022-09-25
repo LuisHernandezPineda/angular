@@ -1,0 +1,36 @@
+<div class="bg-white p-4 rounded-2xl max-w-lg mx-auto my-10 shadow-xl">
+    <!-- Titulo -->
+    <h1 class="text-gray-600 text-center">{{ title }}</h1>
+    <!-- Contenidos -->
+    <div>
+        <!-- Seccion Agregar-->
+        <div class="flex gap-2 my-4">
+            <!--Imput-->
+            <input [(ngModel)]="inputTask" type="text"  class="border-gray-200 border rounded p-2 flex-grow" >
+            <!--boton-->
+            <div (click)="addTask()" class="bg-green-400 rounded-2xl text-green-900 p-2 text-center hover:bg-green-300 cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline mr-2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+        <span>Agregar Tarea</span>
+    </div>
+        </div>
+        <span class="text-xs text-gray-400">Se va a agregar la tarea: {{inputTask}} </span>
+        <!-- Secccion Tareas -->
+        <div *ngFor="let task of tasks" class="border border-gray-200 rounded my-2 p-2 text-gray-500">
+            <label>
+            <input type="checkbox" [(ngModel)]="task.done" class="mr-4">
+           <span [class]="task.done ? 'line-through': '' " >{{ task.title }}</span> 
+           <span *ngIf="task.done">
+
+            ✅
+
+           </span>
+        </label>
+        </div>
+    <!--Aqui iran las tareas-->
+    </div>
+    <!--Footer-->
+    
+
+</div>
