@@ -5,18 +5,21 @@ interface tasks {
   title:string
 }
 
-@Component({
+@Component( {
   selector: 'app-todo-card',
   templateUrl: './todo-card.component.html',
   styleUrls: ['./todo-card.component.css']
+  
 })
 export class TodoCardComponent implements OnInit, OnDestroy {
+
 
   title = "Mis tareas 2";
 
   tasks: Array<tasks> = [];
 
   inputTask = 'Nueva Tarea';
+  eliminarTask = 'Eliminar Tarea';
 
   constructor() { 
     
@@ -33,5 +36,9 @@ export class TodoCardComponent implements OnInit, OnDestroy {
 
   addTask() {
     this.tasks.push({title: this.inputTask, done: false});
+  }
+  deleteTask(task: tasks) {
+    console.log(`Eliminar ${task}`);
+    this.tasks.pop()
   }
 }
